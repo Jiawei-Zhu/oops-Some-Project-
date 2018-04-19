@@ -1,0 +1,9 @@
+from urllib.request import urlopen
+from bs4 import BeautifulSoup
+url="https://book.douban.com/subject/1084336/comments"
+html=urlopen(url)
+soup=BeautifulSoup(html,"lxml")
+
+nameList=soup.findAll("p",{"class":"comment-content"})
+for name in nameList:
+    print(name.get_text())
